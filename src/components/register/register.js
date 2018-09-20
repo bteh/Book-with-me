@@ -14,15 +14,12 @@ export class register extends React.Component {
 		this.registerUser = this.registerUser.bind(this);
 	}
 
-	registerUser(userData){
-  	actions.register(userData).then(
-  		(registered) => {
-  			this.setState({redirect:true})
-  		},
-  		(errors) => {
-  			this.setState({errors});
-  		});
-	}
+	 registerUser(userData) {
+    actions.register(userData).then(
+      registered => this.setState({redirect: true}),
+      errors => this.setState({errors})
+    );
+  }
 
 	render(){
 		const { errors, redirect } = this.state;
