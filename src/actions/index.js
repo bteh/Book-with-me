@@ -65,8 +65,11 @@ export const fetchRentalById = (rentalId) => {
 
 
   const loginSuccess = () => {
+    const username = authService.getUsername();
+    
     return {
-      type: LOGIN_SUCCESS
+      type: LOGIN_SUCCESS,
+      username
     }
   }
 
@@ -78,7 +81,7 @@ export const fetchRentalById = (rentalId) => {
   }
 
   export const register = (userData) => {
-    return axios.post('/api/v1/users/register', {...userData}).then(
+    return axios.post('/api/v1/users/register', userData).then(
       res => res.data ,
       err => Promise.reject(err.response.data.errors)
     )
@@ -94,7 +97,7 @@ export const fetchRentalById = (rentalId) => {
 
   export const login = (userData) => {
     return dispatch => {
-      return axios.post('/api/v1/users/auth', {...userData})
+      return axios.post('/api/v1/users/auth', userData)
         .then(res => res.data)
         .then(token => {
           localStorage.setItem('auth_token', token);
@@ -112,4 +115,10 @@ export const fetchRentalById = (rentalId) => {
     return{
       type: LOGOUT
     }
+  }
+
+  export const createBooking = (booking) => {
+    return axiosInstance.post('/bookings', booking)
+          .then(res => res.data)
+          .catch(({response}) => Promise.reject(response.data.errors))
   }
