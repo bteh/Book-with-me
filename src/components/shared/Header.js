@@ -39,8 +39,6 @@ class Header extends React.Component {
 				  </a>
 				  <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				    <Link className="dropdown-item" to="/rentals/new">Create Rental</Link>
-				    <Link className="dropdown-item" to="#">Manage Rentals</Link>
-				    <Link className="dropdown-item" to="#">Manage Bookings</Link>
 				  </div>
 			</div>
 				)
